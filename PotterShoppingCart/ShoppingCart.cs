@@ -25,6 +25,10 @@ namespace PotterShoppingCart
             {
                 totalPrice = _products.Select(x => x.Price * 0.9).Sum();
             }
+            else if (_products.Count == 4 && _products.Select(o => o.ProductId).Distinct().Count() == 4)
+            {
+                totalPrice = _products.Select(x => x.Price * 0.8).Sum();
+            }
             return totalPrice;
         }
 
