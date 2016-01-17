@@ -10,12 +10,16 @@ namespace PotterShoppingCart
     {
         private List<Product> _products = new List<Product>();
 
-        public decimal GetTotalPrice()
+        public double GetTotalPrice()
         {
-            decimal totalPrice = 0;
+            double totalPrice = 0;
             if (_products.Count == 1)
             {
                 totalPrice = _products.Select(x => x.Price * 1).Sum();
+            }
+            else if (_products.Count == 2 && _products.Select(o => o.ProductId).Distinct().Count() == 2)
+            {
+                totalPrice = _products.Select(x => x.Price * 0.95).Sum();
             }
             return totalPrice;
         }
