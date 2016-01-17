@@ -8,15 +8,21 @@ namespace PotterShoppingCart
 {
     public class ShoppingCart
     {
+        private List<Product> _products = new List<Product>();
 
-        public int GetTotalPrice()
+        public decimal GetTotalPrice()
         {
-            throw new NotImplementedException();
+            decimal totalPrice = 0;
+            if (_products.Count == 1)
+            {
+                totalPrice = _products.Select(x => x.Price * 1).Sum();
+            }
+            return totalPrice;
         }
         
         public void AddProducts(List<Product> products)
         {
-            throw new NotImplementedException();
+            this._products.AddRange(products);
         }
     }
 }
